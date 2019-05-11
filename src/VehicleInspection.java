@@ -2,6 +2,10 @@ class VehicleInspection implements Fabric {
     private Car car;
     private RepairShop repairShop;
 
+    VehicleInspection() {
+        this.repairShop = new RepairShop();
+    }
+
     public boolean setCar(Car car) {
         if (this.car == null) {
             this.car = car;
