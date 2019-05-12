@@ -2,11 +2,12 @@ public class RepairShop implements Fabric {
 
 
     private Car car;
-    private CarWash carWash;
 
-    RepairShop() {
-        carWash = new CarWash();
+    public void setCarWash(CarWash carWash) {
+        this.carWash = carWash;
     }
+
+    private CarWash carWash;
 
     public Fabric getNextFabric() {
         return carWash;

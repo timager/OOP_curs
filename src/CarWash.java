@@ -1,11 +1,12 @@
 class CarWash implements Fabric {
 
     private Car car;
-    private VehicleInspection vehicleInspection;
 
-    CarWash() {
-        this.vehicleInspection = new VehicleInspection();
+    public void setVehicleInspection(VehicleInspection vehicleInspection) {
+        this.vehicleInspection = vehicleInspection;
     }
+
+    private VehicleInspection vehicleInspection;
 
     public Fabric getNextFabric() {
         return vehicleInspection;

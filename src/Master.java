@@ -1,11 +1,11 @@
-public class Master {
-    private Fabric fabric;
-
-    Master(){
-        this.fabric = new RepairShop();
+class Master {
+    void setFabric(Fabric fabric) {
+        this.fabric = fabric;
     }
 
-    public void work() throws InterruptedException {
+    private Fabric fabric;
+
+    void work() throws InterruptedException {
         Thread.sleep(fabric.getWorkTime());
         if (fabric.nextStage()) {
             nextFabric();
