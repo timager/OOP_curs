@@ -2,7 +2,7 @@ class CarWash implements Fabric {
 
     private Car car;
 
-    public void setVehicleInspection(VehicleInspection vehicleInspection) {
+    void setVehicleInspection(VehicleInspection vehicleInspection) {
         this.vehicleInspection = vehicleInspection;
     }
 
@@ -14,7 +14,7 @@ class CarWash implements Fabric {
 
     @Override
     public long getWorkTime() {
-        return 5000;
+        return 5;
     }
 
     public boolean setCar(Car car) {
@@ -24,7 +24,7 @@ class CarWash implements Fabric {
         } else return false;
     }
 
-    Car getCar() {
+    public Car getCar() {
         return car;
     }
 

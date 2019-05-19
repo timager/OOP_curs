@@ -35,6 +35,7 @@ public class RepairShop implements Fabric {
     public boolean setCar(Car car) {
         if (this.car == null) {
             this.car = car;
+            nextStage();
             return true;
         }
         else{

@@ -3,4 +3,5 @@ public interface Fabric {
     boolean nextStage();
     Fabric getNextFabric();
     long getWorkTime();
+    Car getCar();
 }

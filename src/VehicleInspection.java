@@ -15,7 +15,7 @@ class VehicleInspection implements Fabric {
         } else return false;
     }
 
-    Car getCar() {
+    public Car getCar() {
         return car;
     }
 
@@ -31,6 +31,6 @@ class VehicleInspection implements Fabric {
 
     @Override
     public long getWorkTime() {
-        return (long) 3000;
+        return (long) 3;
     }
 }
