@@ -3,13 +3,13 @@ class Master {
         this.fabric = fabric;
     }
 
-    public Fabric getFabric() {
+    Fabric getFabric() {
         return fabric;
     }
 
     private Fabric fabric;
 
-    public long getTimeLeft() {
+    long getTimeLeft() {
         return timeLeft;
     }
 

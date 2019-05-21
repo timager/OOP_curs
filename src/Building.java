@@ -1,19 +1,19 @@
-import java.util.Random;
 
-public class Building {
-    public Master getMaster() {
+
+class Building {
+    Master getMaster() {
         return master;
     }
 
-    public RepairShop getRepairShop() {
+    RepairShop getRepairShop() {
         return repairShop;
     }
 
-    public CarWash getCarWash() {
+    CarWash getCarWash() {
         return carWash;
     }
 
-    public VehicleInspection getVehicleInspection() {
+    VehicleInspection getVehicleInspection() {
         return vehicleInspection;
     }
 
@@ -25,7 +25,7 @@ public class Building {
     private long timeToNextCar;
     private double P = 0.5;
 
-    Building(){
+    Building() {
         repairShop = new RepairShop();
         carWash = new CarWash();
         vehicleInspection = new VehicleInspection();
@@ -38,28 +38,30 @@ public class Building {
         master.setFabric(repairShop);
     }
 
-    private void setTimeToNextCar(){
-        timeToNextCar = 3;
+    private void setTimeToNextCar() {
+        timeToNextCar = 2;
     }
 
 
-    void inputCar(){
-        if(timeToNextCar>0){
+    void inputCar() {
+        repairShop.nextStage();
+        if (timeToNextCar > 0) {
             timeToNextCar--;
-        }
-        else{
+        } else {
             setTimeToNextCar();
             Car car = new Car();
-            if(master.isWork()){
-                if(Math.random()>this.P){
-                    repairShop.setCar(car);
+            if (master.isWork()) {
+                if (Math.random() > this.P) {
+                    if (!repairShop.setCar(car)) {
+                        System.out.println(car + " left (repairshop is busy)\n");
+                    }
+                } else {
+                    System.out.println(car + " left (master is busy)\n");
                 }
-                else{
-                    System.out.println(car+" left\n");
+            } else {
+                if(!repairShop.setCar(car)){
+                    System.out.println(car+" left (repairshop is busy)\n");
                 }
-            }
-            else{
-                repairShop.setCar(car);
             }
         }
     }
