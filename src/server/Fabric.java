@@ -1,3 +1,5 @@
+package server;
+
 public interface Fabric {
     boolean setCar(Car car);
     boolean nextStage();

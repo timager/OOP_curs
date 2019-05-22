@@ -1,3 +1,5 @@
+package server;
+
 class StatisticUtil{
     static long exponentialMedium(float medium){
         double a = Math.random();

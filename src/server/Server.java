@@ -1,4 +1,6 @@
-public class Main {
+package server;
+
+public class Server {
     private static void draw(Building building){
         System.out.print("RS car: "+building.getRepairShop().getCar()+" ");
         System.out.print("CW car: "+building.getCarWash().getCar()+" ");

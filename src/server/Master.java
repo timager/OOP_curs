@@ -1,3 +1,5 @@
+package server;
+
 class Master {
     void setFabric(Fabric fabric) {
         this.fabric = fabric;

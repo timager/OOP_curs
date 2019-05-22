@@ -1,3 +1,5 @@
+package server;
+
 class VehicleInspection implements Fabric {
     private Car car;
     private long R2;
