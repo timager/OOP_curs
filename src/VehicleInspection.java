@@ -1,5 +1,11 @@
 class VehicleInspection implements Fabric {
     private Car car;
+    private long R2;
+
+    VehicleInspection(long R2){
+
+        this.R2 = R2;
+    }
 
     void setRepairShop(RepairShop repairShop) {
         this.repairShop = repairShop;
@@ -31,6 +37,6 @@ class VehicleInspection implements Fabric {
 
     @Override
     public long getWorkTime() {
-        return (long) 3;
+        return StatisticUtil.exponentialMedium( this.R2);
     }
 }

@@ -1,6 +1,11 @@
 class CarWash implements Fabric {
 
     private Car car;
+    private long R1;
+
+    CarWash(long R1) {
+        this.R1 = R1;
+    }
 
     void setVehicleInspection(VehicleInspection vehicleInspection) {
         this.vehicleInspection = vehicleInspection;
@@ -14,7 +19,7 @@ class CarWash implements Fabric {
 
     @Override
     public long getWorkTime() {
-        return 5;
+        return StatisticUtil.exponentialMedium(this.R1);
     }
 
     public boolean setCar(Car car) {

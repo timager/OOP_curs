@@ -3,7 +3,7 @@ public class RepairShop implements Fabric {
 
     private Car car;
 
-    public void setCarWash(CarWash carWash) {
+    void setCarWash(CarWash carWash) {
         this.carWash = carWash;
     }
 

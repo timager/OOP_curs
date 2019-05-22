@@ -8,7 +8,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Building building = new Building();
+        Building building = new Building(3,4,0.5,1);
         while (true) {
             draw(building);
 

@@ -23,12 +23,15 @@ class Building {
     private VehicleInspection vehicleInspection;
 
     private long timeToNextCar;
-    private double P = 0.5;
+    private double P;
+    private long T;
 
-    Building() {
+    Building(long R1,long R2,double P,long T) {
+        this.P = P;
+        this.T = T;
         repairShop = new RepairShop();
-        carWash = new CarWash();
-        vehicleInspection = new VehicleInspection();
+        carWash = new CarWash(R1);
+        vehicleInspection = new VehicleInspection(R2);
 
         repairShop.setCarWash(carWash);
         carWash.setVehicleInspection(vehicleInspection);
@@ -39,7 +42,7 @@ class Building {
     }
 
     private void setTimeToNextCar() {
-        timeToNextCar = 2;
+        timeToNextCar = StatisticUtil.exponentialMedium(this.T);
     }
 
 
@@ -51,7 +54,7 @@ class Building {
             setTimeToNextCar();
             Car car = new Car();
             if (master.isWork()) {
-                if (Math.random() > this.P) {
+                if (Math.random() <= this.P) {
                     if (!repairShop.setCar(car)) {
                         System.out.println(car + " left (repairshop is busy)\n");
                     }
