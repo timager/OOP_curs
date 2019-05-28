@@ -10,6 +10,9 @@ public class Client extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-        Client client = new Client();
+//        Client client = new Client();
+        MyUDPClient client = new MyUDPClient();
+        client.send("Саня хуй соси");
+
     }
 }

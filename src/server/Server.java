@@ -10,13 +10,14 @@ public class Server {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Building building = new Building(3,4,0.5,1);
-        while (true) {
-            draw(building);
-
-            building.inputCar();
-            building.getMaster().work();
-            Thread.sleep(1000);
-        }
+        MyUDPServer server = new MyUDPServer();
+        server.start();
+//        Building building = new Building(3,4,0.5,1);
+//        while (true) {
+//            draw(building);
+//            building.inputCar();
+//            building.getMaster().work();
+//            Thread.sleep(1000);
+//        }
     }
 }
