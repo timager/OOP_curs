@@ -1,5 +1,6 @@
 package server;
 
+
 class CarWash implements Fabric {
 
     private Car car;

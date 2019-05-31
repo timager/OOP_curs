@@ -1,6 +1,8 @@
 package server;
 
-class Master {
+import java.io.Serializable;
+
+class Master implements Serializable {
     void setFabric(Fabric fabric) {
         this.fabric = fabric;
     }

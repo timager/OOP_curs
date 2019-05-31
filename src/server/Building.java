@@ -1,6 +1,8 @@
 package server;
 
-class Building {
+import java.io.Serializable;
+
+class Building implements Serializable {
     Master getMaster() {
         return master;
     }
@@ -25,6 +27,12 @@ class Building {
     private long timeToNextCar;
     private double P;
     private long T;
+
+    public void setWorked(boolean worked) {
+        isWorked = worked;
+    }
+
+    private boolean isWorked = false;
 
     Building(long R1,long R2,double P,long T) {
         this.P = P;
@@ -68,4 +76,9 @@ class Building {
             }
         }
     }
+
+    public boolean isWorked() {
+        return isWorked;
+    }
+
 }

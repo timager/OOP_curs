@@ -1,10 +1,12 @@
 package client;
 
+import server.Server;
+
 import java.io.IOException;
 import java.net.*;
 
 public class MyUDPClient {
-    private DatagramSocket socket;
+private DatagramSocket socket;
     private byte[] input = new byte[256];
     private byte[] output = new byte[256];
     private InetAddress address;
@@ -24,9 +26,10 @@ public class MyUDPClient {
         }
     }
 
-    public void send(String str){
+    public void send(String command){
+        System.out.println("Отправляю "+command);
         try {
-            output = str.getBytes();
+            output = command.getBytes();
             DatagramPacket packet = new DatagramPacket(output, output.length, address, PORT);
             socket.send(packet);
             DatagramPacket inputPacket = new DatagramPacket(input, input.length);

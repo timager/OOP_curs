@@ -1,5 +1,7 @@
 package client;
 
+import server.Server;
+
 import javax.swing.*;
 
 public class Client extends JFrame {
@@ -10,9 +12,7 @@ public class Client extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-//        Client client = new Client();
         MyUDPClient client = new MyUDPClient();
-        client.send("Саня хуй соси");
-
+        client.send(Server.GET_SIMULATION_DATA);
     }
 }
