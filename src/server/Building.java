@@ -2,7 +2,7 @@ package server;
 
 import java.io.Serializable;
 
-class Building implements Serializable {
+public class Building implements Serializable {
     Master getMaster() {
         return master;
     }
@@ -34,7 +34,7 @@ class Building implements Serializable {
 
     private boolean isWorked = false;
 
-    Building(long R1,long R2,double P,long T) {
+    Building(long R1, long R2, double P, long T) {
         this.P = P;
         this.T = T;
         repairShop = new RepairShop();
@@ -70,15 +70,23 @@ class Building implements Serializable {
                     System.out.println(car + " left (master is busy)\n");
                 }
             } else {
-                if(!repairShop.setCar(car)){
-                    System.out.println(car+" left (repairshop is busy)\n");
+                if (!repairShop.setCar(car)) {
+                    System.out.println(car + " left (repairshop is busy)\n");
                 }
             }
         }
     }
 
-    public boolean isWorked() {
+    boolean isWorked() {
         return isWorked;
     }
 
+    @Override
+    public String toString() {
+        return "RS car: " + this.getRepairShop().getCar() + " " + "CW car: " +
+                this.getCarWash().getCar() + " VI car: " +
+                this.getVehicleInspection().getCar() + "\nmaster work in " +
+                this.getMaster().getFabric().getClass() + " " +
+                this.getMaster().getTimeLeft() + " c.\n";
+    }
 }

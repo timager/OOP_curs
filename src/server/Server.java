@@ -92,15 +92,6 @@ public class Server extends Thread {
         switchCommand(command);
     }
 
-//    private String getData() {
-//        System.out.print("RS car: " + building.getRepairShop().getCar() + " ");
-//        System.out.print("CW car: " + building.getCarWash().getCar() + " ");
-//        System.out.println("VI car: " + building.getVehicleInspection().getCar());
-//
-//        System.out.println("master work in " + building.getMaster().getFabric().getClass() + " " + building.getMaster().getTimeLeft() + " c.\n");
-//
-//    }
-
     public static void main(String[] args) throws SocketException {
         Server server = new Server();
         server.start();

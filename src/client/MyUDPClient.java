@@ -1,19 +1,22 @@
 package client;
 
+import server.Building;
 import server.Server;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.*;
 
-public class MyUDPClient {
-private DatagramSocket socket;
+class MyUDPClient {
+    private DatagramSocket socket;
     private byte[] input = new byte[256];
-    private byte[] output = new byte[256];
     private InetAddress address;
-    public static final int PORT = 1488;
+    private static final int PORT = 1488;
 
 
-    public MyUDPClient() {
+    MyUDPClient() {
         try {
             socket = new DatagramSocket();
         } catch (SocketException e) {
@@ -26,17 +29,20 @@ private DatagramSocket socket;
         }
     }
 
-    public void send(String command){
-        System.out.println("Отправляю "+command);
-        try {
-            output = command.getBytes();
-            DatagramPacket packet = new DatagramPacket(output, output.length, address, PORT);
-            socket.send(packet);
-            DatagramPacket inputPacket = new DatagramPacket(input, input.length);
-            socket.receive(inputPacket);
-            System.out.println(new String(input));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void send(String command) throws IOException, ClassNotFoundException {
+        System.out.println("Отправляю " + command);
+
+        byte[] output = command.getBytes();
+        DatagramPacket packet = new DatagramPacket(output, output.length, address, PORT);
+        socket.send(packet);
+        DatagramPacket inputPacket = new DatagramPacket(input, input.length);
+        socket.receive(inputPacket);
+
+        InputStream is = new ByteArrayInputStream(input);
+        ObjectInputStream ois = new ObjectInputStream(is);
+        Building building = (Building) ois.readObject();
+
+        System.out.println(building);
+
     }
 }
