@@ -9,16 +9,17 @@ import java.net.InetAddress;
 import java.net.SocketException;
 
 public class Server extends Thread {
-    public static final String START_SIMULATION = "start_sim";
+    public static final int BYTE_LENGTH = 1024;
+
+    public static final String START_SIMULATION = "start_sid";
     public static final String STOP_SIMULATION = "stop_sim";
     public static final String GET_SIMULATION_DATA = "get_data";
 
-    private static long sleep = 1000;
+    public static long SLEEP = 1000;
 
     private DatagramSocket socket;
-    private byte[] input = new byte[256];
 
-    private static final int PORT = 1488;
+    public static final int PORT = 1488;
 
     private int port;
     private InetAddress address;
@@ -42,7 +43,7 @@ public class Server extends Thread {
                 e.printStackTrace();
             }
             try {
-                sleep(sleep);
+                sleep(SLEEP);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -55,10 +56,10 @@ public class Server extends Thread {
         socket.send(outputPacket);
     }
 
-    private void send(Object object) throws IOException {
+    private void send(Building building) throws IOException {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(os);
-        oos.writeObject(object);
+        oos.writeObject(building);
         oos.flush();
         DatagramPacket outputPacket = new DatagramPacket(os.toByteArray(), os.toByteArray().length, address, port);
         socket.send(outputPacket);
@@ -67,22 +68,25 @@ public class Server extends Thread {
     private void switchCommand(String command) throws IOException {
         switch (command) {
             case Server.GET_SIMULATION_DATA:
-                send(building);
+                System.out.println("Данные отправлены");
                 break;
             case Server.START_SIMULATION:
                 building.setWorked(true);
-                send("Симуляция запущена");
+                System.out.println("Симуляция запущена");
                 break;
             case Server.STOP_SIMULATION:
                 building.setWorked(false);
-                send("Симуляция остановлена");
+                System.out.println("Симуляция остановлена");
                 break;
             default:
-                send("Команда не распознана");
+                System.out.println("Команда не распознана");
         }
+        System.out.println("\n");
+        send(building);
     }
 
     private void getPacket() throws IOException {
+        byte[] input = new byte[BYTE_LENGTH];
         DatagramPacket inputPacket = new DatagramPacket(input, input.length);
         socket.receive(inputPacket);
         address = inputPacket.getAddress();
@@ -95,11 +99,5 @@ public class Server extends Thread {
     public static void main(String[] args) throws SocketException {
         Server server = new Server();
         server.start();
-//        while (true) {
-//            draw(building);
-//            building.inputCar();
-//            building.getMaster().work();
-//            Thread.sleep(1000);
-//        }
     }
 }

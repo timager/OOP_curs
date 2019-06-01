@@ -12,8 +12,14 @@ public class Client extends JFrame {
         setSize(400, 130);
         setVisible(true);
     }
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         MyUDPClient client = new MyUDPClient();
-        client.send(Server.GET_SIMULATION_DATA);
+        client.send(Server.START_SIMULATION);
+        Thread.sleep(Server.SLEEP);
+        for(int i=0;i<=20;i++){
+            client.send(Server.GET_SIMULATION_DATA);
+            Thread.sleep(Server.SLEEP);
+        }
+        client.send(Server.STOP_SIMULATION);
     }
 }

@@ -11,10 +11,8 @@ import java.net.*;
 
 class MyUDPClient {
     private DatagramSocket socket;
-    private byte[] input = new byte[256];
+    private byte[] input = new byte[Server.BYTE_LENGTH];
     private InetAddress address;
-    private static final int PORT = 1488;
-
 
     MyUDPClient() {
         try {
@@ -33,7 +31,7 @@ class MyUDPClient {
         System.out.println("Отправляю " + command);
 
         byte[] output = command.getBytes();
-        DatagramPacket packet = new DatagramPacket(output, output.length, address, PORT);
+        DatagramPacket packet = new DatagramPacket(output, output.length, address, Server.PORT);
         socket.send(packet);
         DatagramPacket inputPacket = new DatagramPacket(input, input.length);
         socket.receive(inputPacket);
