@@ -8,4 +8,5 @@ public interface Fabric extends Serializable {
     Fabric getNextFabric();
     long getWorkTime();
     Car getCar();
+    void clear();
 }

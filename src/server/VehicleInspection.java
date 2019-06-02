@@ -2,6 +2,15 @@ package server;
 
 public class VehicleInspection implements Fabric {
     private Car car;
+
+    public long getR2() {
+        return R2;
+    }
+
+    public void setR2(long r2) {
+        R2 = r2;
+    }
+
     private long R2;
 
     VehicleInspection(long R2){
@@ -40,5 +49,10 @@ public class VehicleInspection implements Fabric {
     @Override
     public long getWorkTime() {
         return (long)(1000.0/Server.SLEEP)*StatisticUtil.exponentialMedium( this.R2);
+    }
+
+    @Override
+    public void clear() {
+        car = null;
     }
 }

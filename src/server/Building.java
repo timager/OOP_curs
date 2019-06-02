@@ -25,8 +25,17 @@ public class Building implements Serializable {
     private VehicleInspection vehicleInspection;
 
     private long timeToNextCar;
-    private double P;
-    private long T;
+
+    public void setP(double p) {
+        P = p;
+    }
+
+    public void setT(long t) {
+        T = t;
+    }
+
+    public double P;
+    public long T;
 
     public void setWorked(boolean worked) {
         isWorked = worked;

@@ -21,7 +21,7 @@ class Draw {
         Car car = repairShop.getCar();
         if (car != null) {
             repairShopCanvas.getGraphicsContext2D().fillText(repairShop.getCar().toString(), 10, 10);
-            drawCar(repairShopCanvas,car);
+            drawCar(repairShopCanvas, car);
 
         }
     }
@@ -31,7 +31,7 @@ class Draw {
         Car car = carWash.getCar();
         if (car != null) {
             carWashCanvas.getGraphicsContext2D().fillText(carWash.getCar().toString(), 10, 10);
-            drawCar(carWashCanvas,car);
+            drawCar(carWashCanvas, car);
 
         }
     }
@@ -41,7 +41,7 @@ class Draw {
         Car car = vehicleInspection.getCar();
         if (car != null) {
             vehicleInspectionCanvas.getGraphicsContext2D().fillText(car.toString(), 10, 10);
-            drawCar(vehicleInspectionCanvas,car);
+            drawCar(vehicleInspectionCanvas, car);
         }
     }
 
@@ -51,6 +51,7 @@ class Draw {
         drawRepairShop();
         drawCarWash();
         drawVehicleInspection();
+        drawMaster();
     }
 
     private void clearCanvases() {
@@ -59,14 +60,34 @@ class Draw {
         vehicleInspectionCanvas.getGraphicsContext2D().clearRect(0, 0, vehicleInspectionCanvas.getWidth(), vehicleInspectionCanvas.getHeight());
     }
 
-    private void drawCar(Canvas canvas, Car car){
+    private void drawCar(Canvas canvas, Car car) {
         GraphicsContext context = canvas.getGraphicsContext2D();
-        context.fillRect(29,29,32,12);
-        context.setFill(Color.rgb(car.r,car.g,car.b));
-        context.fillRect(30,30,30,10);
         context.setFill(Color.BLACK);
-        context.fillRect(35,25,20,5);
-        context.fillOval(30,35,10,10);
-        context.fillOval(50,35,10,10);
+        int x = 30;
+        int y= 30;
+        context.fillRect(x-1, y-1, 32, 12);
+        context.setFill(Color.rgb(car.r, car.g, car.b));
+        context.fillRect(x, y, 30, 10);
+        context.setFill(Color.BLACK);
+        context.fillRect(x+5, y-5, 20, 5);
+        context.fillOval(x, x+5, 10, 10);
+        context.fillOval(x+20, y+5, 10, 10);
+    }
+
+    private void drawMaster() {
+        Master master = building.getMaster();
+        Canvas canvas;
+        if (master.getFabric() instanceof RepairShop) {
+            canvas = repairShopCanvas;
+        } else if ((master.getFabric() instanceof CarWash)) {
+            canvas = carWashCanvas;
+        } else {
+            canvas = vehicleInspectionCanvas;
+        }
+        GraphicsContext context = canvas.getGraphicsContext2D();
+        context.setFill(Color.PINK);
+        context.fillOval(38, 60, 25, 25);
+        context.setFill(Color.BLACK);
+        context.fillText(master.getTimeLeft()/(1000/Server.SLEEP)+"c.",46,75,10);
     }
 }

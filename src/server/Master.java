@@ -2,18 +2,18 @@ package server;
 
 import java.io.Serializable;
 
-class Master implements Serializable {
+public class Master implements Serializable {
     void setFabric(Fabric fabric) {
         this.fabric = fabric;
     }
 
-    Fabric getFabric() {
+    public Fabric getFabric() {
         return fabric;
     }
 
     private Fabric fabric;
 
-    long getTimeLeft() {
+    public long getTimeLeft() {
         return timeLeft;
     }
 

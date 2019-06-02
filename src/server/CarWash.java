@@ -4,6 +4,15 @@ package server;
 public class CarWash implements Fabric {
 
     private Car car;
+
+    public long getR1() {
+        return R1;
+    }
+
+    public void setR1(long r1) {
+        R1 = r1;
+    }
+
     private long R1;
 
     CarWash(long R1) {
@@ -45,5 +54,10 @@ public class CarWash implements Fabric {
             }
         }
         return false;
+    }
+
+    @Override
+    public void clear() {
+        car = null;
     }
 }
