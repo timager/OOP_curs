@@ -112,6 +112,7 @@ public class Controller extends Thread {
                 getSimulationData();
             } catch (IOException | ClassNotFoundException e) {
                 exit = true;
+                e.printStackTrace();
                 alert("Произошла ошибка, перезапустите программу", e.getMessage());
             }
         }

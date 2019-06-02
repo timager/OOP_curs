@@ -1,11 +1,13 @@
 package client;
 
-public class Packet {
+import java.io.Serializable;
+
+public class Packet implements Serializable {
     public String getCommand() {
         return command;
     }
 
-    public void setCommand(String command) {
+    void setCommand(String command) {
         this.command = command;
     }
 
@@ -13,7 +15,7 @@ public class Packet {
         return R1;
     }
 
-    public void setR1(long r1) {
+    void setR1(long r1) {
         R1 = r1;
     }
 
@@ -21,7 +23,7 @@ public class Packet {
         return R2;
     }
 
-    public void setR2(long r2) {
+    void setR2(long r2) {
         R2 = r2;
     }
 
@@ -29,7 +31,7 @@ public class Packet {
         return T;
     }
 
-    public void setT(long t) {
+    void setT(long t) {
         T = t;
     }
 
@@ -37,7 +39,7 @@ public class Packet {
         return P;
     }
 
-    public void setP(double p) {
+    void setP(double p) {
         P = p;
     }
 
