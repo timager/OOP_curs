@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 
 public class Server extends Thread {
-    public static final int BYTE_LENGTH = 1024;
+    public static final int BYTE_LENGTH = 8000;
 
     public static final String START_SIMULATION = "start_sid";
     public static final String STOP_SIMULATION = "stop_sim";
@@ -80,6 +80,7 @@ public class Server extends Thread {
                 building.getRepairShop().clear();
                 building.getCarWash().clear();
                 building.getVehicleInspection().clear();
+                building.clearIntervalHistory();
                 System.out.println("Симуляция очищена");
                 break;
             }

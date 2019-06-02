@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import server.Building;
 import server.Server;
 
@@ -23,6 +24,8 @@ public class Controller extends Thread {
     private Button startSimulationBtn, stopSimulationBtn;
     @FXML
     private TextField fieldR1, fieldR2, fieldP, fieldT;
+    @FXML
+    private Text textMedium, textSKO;
 
     @FXML
     public void initialize() {
@@ -53,7 +56,7 @@ public class Controller extends Thread {
 
     private void onlyFloat(TextField field) {
         field.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+            if (!newValue.matches("\\d{0,7}([.]\\d{0,4})?")) {
                 field.setText(newValue.replaceAll("[^\\d{0,7}([\\.]\\d{0,4})?]", ""));
             }
         });
@@ -134,6 +137,8 @@ public class Controller extends Thread {
             fieldR2.setText(String.valueOf(building.getVehicleInspection().getR2()));
             fieldP.setText(String.valueOf(building.P));
             fieldT.setText(String.valueOf(building.T));
+            textMedium.setText(String.format("%.2g%n", building.getMediumT()));
+            textSKO.setText(String.format("%.2g%n", building.getSkoT()));
         }
 
         System.out.println(building);

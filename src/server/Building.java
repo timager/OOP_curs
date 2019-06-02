@@ -1,6 +1,7 @@
 package server;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Building implements Serializable {
     public Master getMaster() {
@@ -26,18 +27,18 @@ public class Building implements Serializable {
 
     private long timeToNextCar;
 
-    public void setP(double p) {
+    void setP(double p) {
         P = p;
     }
 
-    public void setT(long t) {
+    void setT(long t) {
         T = t;
     }
 
     public double P;
     public long T;
 
-    public void setWorked(boolean worked) {
+    void setWorked(boolean worked) {
         isWorked = worked;
     }
 
@@ -58,9 +59,23 @@ public class Building implements Serializable {
         master.setFabric(repairShop);
     }
 
+    private double mediumT,skoT;
+
+    private ArrayList<Long> carIntervalHistory = new ArrayList<>();
+
+
+    public void clearIntervalHistory(){
+        mediumT = 0;
+        skoT = 0;
+        carIntervalHistory.clear();
+    }
     private void setTimeToNextCar() {
         timeToNextCar = StatisticUtil.exponentialMedium(this.T);
+        carIntervalHistory.add(timeToNextCar);
+        mediumT = StatisticUtil.medium(carIntervalHistory);
+        skoT = StatisticUtil.sko(carIntervalHistory);
     }
+
 
 
     void inputCar() {
@@ -97,5 +112,13 @@ public class Building implements Serializable {
                 this.getVehicleInspection().getCar() + "\nmaster work in " +
                 this.getMaster().getFabric().getClass() + " " +
                 this.getMaster().getTimeLeft()/(1000/Server.SLEEP) + " c.\n";
+    }
+
+    public double getMediumT() {
+        return mediumT;
+    }
+
+    public double getSkoT() {
+        return skoT;
     }
 }
