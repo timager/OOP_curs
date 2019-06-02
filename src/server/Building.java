@@ -3,19 +3,19 @@ package server;
 import java.io.Serializable;
 
 public class Building implements Serializable {
-    Master getMaster() {
+    public Master getMaster() {
         return master;
     }
 
-    RepairShop getRepairShop() {
+    public RepairShop getRepairShop() {
         return repairShop;
     }
 
-    CarWash getCarWash() {
+    public CarWash getCarWash() {
         return carWash;
     }
 
-    VehicleInspection getVehicleInspection() {
+    public VehicleInspection getVehicleInspection() {
         return vehicleInspection;
     }
 

@@ -1,6 +1,7 @@
 package client;
 
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
@@ -13,7 +14,10 @@ public class Controller extends Thread {
     private Client client = new Client();
     private Building building;
     private boolean exit = false;
-    
+    private Draw draw;
+
+    @FXML
+    private Canvas repairShopCanvas,carWashCanvas,vehicleInspectionCanvas;
     @FXML
     private Button startSimulationBtn;
     @FXML
@@ -22,6 +26,7 @@ public class Controller extends Thread {
     @FXML
     public void initialize() {
         try {
+            draw = new Draw(repairShopCanvas,carWashCanvas,vehicleInspectionCanvas);
             getSimulationData();
         } catch (IOException | ClassNotFoundException e) {
             alert("Произошла ошибка", e.getMessage());
@@ -52,7 +57,7 @@ public class Controller extends Thread {
     }
 
     private void alert(String title, String text) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setContentText(text);
         alert.showAndWait();
@@ -75,5 +80,6 @@ public class Controller extends Thread {
         startSimulationBtn.setDisable(building.isWorked());
         stopSimulationBtn.setDisable(!building.isWorked());
         System.out.println(building);
+        draw.drawBuilding(building);
     }
 }
