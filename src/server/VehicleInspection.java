@@ -39,6 +39,6 @@ class VehicleInspection implements Fabric {
 
     @Override
     public long getWorkTime() {
-        return StatisticUtil.exponentialMedium( this.R2);
+        return (long)(1000.0/Server.SLEEP)*StatisticUtil.exponentialMedium( this.R2);
     }
 }

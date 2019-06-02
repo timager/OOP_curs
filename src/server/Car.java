@@ -10,8 +10,13 @@ public class Car implements Serializable {
 
     Car(){
         Random random = new Random();
-        r = random.nextInt();
-        g = random.nextInt();
-        b = random.nextInt();
+        r = StatisticUtil.random(0,255);
+        g = StatisticUtil.random(0,255);
+        b = StatisticUtil.random(0,255);
+    }
+
+    @Override
+    public String toString() {
+        return "Car("+r+","+g+","+b+")";
     }
 }

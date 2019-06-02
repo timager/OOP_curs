@@ -77,7 +77,7 @@ public class Building implements Serializable {
         }
     }
 
-    boolean isWorked() {
+    public boolean isWorked() {
         return isWorked;
     }
 
@@ -87,6 +87,6 @@ public class Building implements Serializable {
                 this.getCarWash().getCar() + " VI car: " +
                 this.getVehicleInspection().getCar() + "\nmaster work in " +
                 this.getMaster().getFabric().getClass() + " " +
-                this.getMaster().getTimeLeft() + " c.\n";
+                this.getMaster().getTimeLeft()/(1000/Server.SLEEP) + " c.\n";
     }
 }

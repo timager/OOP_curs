@@ -27,7 +27,7 @@ public class Client{
         }
     }
 
-    public void send(String command) throws IOException, ClassNotFoundException {
+    public Building send(String command) throws IOException, ClassNotFoundException {
         System.out.println("Отправляю " + command);
 
         byte[] output = command.getBytes();
@@ -41,7 +41,7 @@ public class Client{
         Building building = (Building) ois.readObject();
 
         System.out.println(building);
-
+        return building;
     }
 
 //    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {

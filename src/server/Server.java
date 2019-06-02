@@ -15,7 +15,7 @@ public class Server extends Thread {
     public static final String STOP_SIMULATION = "stop_sim";
     public static final String GET_SIMULATION_DATA = "get_data";
 
-    public static long SLEEP = 1000;
+    public static long SLEEP = 10;
 
     private DatagramSocket socket;
 

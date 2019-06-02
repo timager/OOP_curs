@@ -22,7 +22,7 @@ class CarWash implements Fabric {
 
     @Override
     public long getWorkTime() {
-        return StatisticUtil.exponentialMedium(this.R1);
+        return (long)(1000.0/Server.SLEEP)*StatisticUtil.exponentialMedium(this.R1);
     }
 
     public boolean setCar(Car car) {
