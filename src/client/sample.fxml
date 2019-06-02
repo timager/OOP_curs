@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="client.Controller">
+    <GridPane layoutX="10.0" layoutY="10.0" prefHeight="355.0" prefWidth="587.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="172.60001220703126" minHeight="10.0" prefHeight="133.6" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="253.39999237060545" minHeight="10.0" prefHeight="221.6" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane layoutX="32.0" layoutY="-38.0" prefHeight="200.0" prefWidth="200.0"/>
+            <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0"
+                    text="Запустить симуляцию" fx:id="startSimulationBtn" onAction="#startSimulation"/>
+            <Button layoutX="24.0" layoutY="61.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0"
+                    text="Остановить симуляцию" fx:id="stopSimulationBtn" onAction="#stopSimulation"/>
+            <Button layoutX="24.0" layoutY="97.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0"
+                    text="Очистить"/>
+        </Pane>
+    </GridPane>
+</Pane>
