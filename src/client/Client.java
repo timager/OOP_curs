@@ -3,19 +3,18 @@ package client;
 import server.Building;
 import server.Server;
 
-import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.net.*;
 
-public class Client extends JFrame {
+public class Client{
     private DatagramSocket socket;
     private byte[] input = new byte[Server.BYTE_LENGTH];
     private InetAddress address;
 
-    private Client() {
+    public Client() {
         try {
             socket = new DatagramSocket();
         } catch (SocketException e) {
@@ -28,7 +27,7 @@ public class Client extends JFrame {
         }
     }
 
-    private void send(String command) throws IOException, ClassNotFoundException {
+    public void send(String command) throws IOException, ClassNotFoundException {
         System.out.println("Отправляю " + command);
 
         byte[] output = command.getBytes();
@@ -45,16 +44,14 @@ public class Client extends JFrame {
 
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        Client client = new Client();
-        client.send(Server.START_SIMULATION);
-        Thread.sleep(Server.SLEEP);
-        for(int i=0;i<=20;i++){
-            client.send(Server.GET_SIMULATION_DATA);
-            Thread.sleep(Server.SLEEP);
-        }
-        client.send(Server.STOP_SIMULATION);
-    }
-
-
+//    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+//        Client client = new Client();
+//        client.send(Server.START_SIMULATION);
+//        Thread.sleep(Server.SLEEP);
+//        for(int i=0;i<=20;i++){
+//            client.send(Server.GET_SIMULATION_DATA);
+//            Thread.sleep(Server.SLEEP);
+//        }
+//        client.send(Server.STOP_SIMULATION);
+//    }
 }
